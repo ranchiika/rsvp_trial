@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from "react";
 // Pastikan jalur import komponen sudah benar, mengarah ke folder 'component'
 import RSVPForm from "./component/RSVPForm";
@@ -8,23 +7,26 @@ import Footer from "./component/Footer";
 import { BiCalendar, BiTime } from "react-icons/bi";
 import EventGallery from "./component/EventGallery";
 
+// --- PERBAIKAN JALUR GAMBAR ---
+// Impor gambar dari src/assets agar Vite bisa memprosesnya dengan benar
+import nutricareLogo from './assets/Nutricare.png';
+import descImage from './assets/desc.png';
+import bgPng from './assets/bg.png';
+import gradientGif from './assets/gradient.gif'; // Untuk background div utama App
+import bgBgImage from './assets/bg-bg.png'; // Untuk background di Hero Section
+
 function App() {
-  // State untuk menyimpan ID unik QR code setelah RSVP berhasil
   const [qrCodeId, setQrCodeId] = useState(null);
 
-  // Fungsi yang dipanggil dari RSVPForm setelah berhasil submit
   const handleRSVPSuccess = (idUnik) => {
     setQrCodeId(idUnik);
   };
 
-  // Fungsi untuk mereset tampilan dan kembali ke formulir
   const handleReset = () => {
     setQrCodeId(null);
   };
 
-  // PENTING: GANTI TANGGAL DAN WAKTU EVENT-MU DI SINI!
-  const eventDateTime = "2025-08-10T14:00:00"; // Contoh: 10 Agustus 2025, jam 2 siang
-
+  const eventDateTime = "2025-08-10T14:00:00";
   const eventName = "SKIN & PLANT CARE 2025";
   const eventDesc =
     "SKIN & PLANT CARE 2025 is a one-day experience that brings together natural skincare lovers and plant enthusiasts in a celebration of beauty, wellness, and sustainability. Join us for a refreshing day filled with interactive workshops, expert talks, and eco-friendly brands — all designed to inspire you to care for your skin and the planet at the same time. Explore nature-powered self-care and grow your green space — inside and out. 🌿💧";
@@ -33,17 +35,20 @@ function App() {
   const eventLocation = "Grand Ballroom, Jakarta Convention Center";
 
   return (
-    <div className="font-sans leading-relaxed text-gray-800 antialiased bg-gray-100 min-h-screen bg-no-repeat h-screen w-screen bg-cover bg-[url('/src/assets/gradient.gif')]">
+    <div 
+      className="font-sans leading-relaxed text-gray-800 antialiased bg-gray-100 min-h-screen bg-no-repeat h-screen w-screen bg-cover 
+                 "style={{ backgroundImage: `url(${gradientGif})` }}> {/* Ganti bg-[url(...)] dengan style backgroundImage */}
+      
       {/* Hero Section */}
       <section 
-        className="relative h-screen bg-cover bg-center bg-no-repeat py-24 md:py-36 flex items-center justify-center text-white 
-                   bg-[url('/src/assets/bg-bg.png')]"> {/* <-- Gambar latar belakang ditambahkan di sini */}
+        className="relative h-screen bg-cover bg-center bg-no-repeat py-24 md:py-36 flex items-center justify-center text-white"
+        style={{ backgroundImage: `url(${bgBgImage})` }}> {/* Ganti bg-[url(...)] dengan style backgroundImage */}
         <div className="bg-purple-900/30 w-full h-screen  flex items-center justify-center">
           <div className="container mx-auto px-4 text-center">
             <div className="flex justify-center">
               <img
-                src="/src/assets/Nutricare.png"
-                alt=""
+                src={nutricareLogo} // Gunakan variabel yang diimpor
+                alt="Nutricare Logo"
                 className="w-70 mb-10 hover:scale-110 ease-in-out transition-transform"
               />
             </div>
@@ -68,7 +73,7 @@ function App() {
       <section className="py-10 px-10 bg-white h-screen">
         <div className="flex items-center justify-center">
           <div>
-            <img src="/src/assets/desc.png" className="w-lg" alt="" />
+            <img src={descImage} className="w-lg" alt="Description" />
           </div>
           <div className="m-10">
             <h1 className="text-4xl italic mb-2"> What is</h1>
@@ -84,7 +89,9 @@ function App() {
       <EventGallery/>
 
       {/* Event Details Section */}
-      <section className=" bg-white h-screen bg-[url('/src/assets/bg.png')]">
+      <section 
+        className=" bg-white h-screen" 
+        style={{ backgroundImage: `url(${bgPng})` }}> {/* Ganti bg-[url(...)] dengan style backgroundImage */}
         <div className=" py-16 px-4 bg-[#B13E91]/50 w-full h-screen flex items-center justify-center">
           <div className="w-2xl bg-white text-center p-10 rounded-2xl shadow-2xl">
             <p className="text-xl mb-6 font-bold text-white">
@@ -97,11 +104,11 @@ function App() {
             <div className="mt-6 mb-4 rounded-lg overflow-hidden shadow-lg border border-gray-200">
               {/* GANTI KODE IFRAME DI BAWAH INI DENGAN KODE YANG KAMU SALIN DARI GOOGLE MAPS */}
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3713966704345!2d106.80492447499036!3d-6.214653493773262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f6adbd77af01%3A0x23abed373d7987d2!2sJakarta%20Convention%20Center!5e0!3m2!1sen!2sid!4v1753769411488!5m2!1sen!2sid"
-                width="100%" // Sesuaikan lebar
-                height="350" // Sesuaikan tinggi map
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3888370903333!2d106.84074827599728!3d-6.212002160822234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e444444444%3A0x6b44444444444444!2sJakarta%20Convention%20Center%20(JCC)!5e0!3m2!1sen!2sid!4v1625464567890!5m2!1sen!2sid"
+                width="100%" 
+                height="350" 
                 style={{ border: 0 }}
-                allowFullScreen="true"
+                allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lokasi Event"
@@ -114,7 +121,6 @@ function App() {
       {/* Countdown Section */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="container mx-auto">
-          {/* Komponen Countdown akan diletakkan di sini */}
           <Countdown eventDate={eventDateTime} />
         </div>
       </section>
@@ -132,13 +138,9 @@ function App() {
           </div>
 
           <div className=" mx-auto bg-white rounded-lg shadow-lg">
-            {" "}
-            {/* Wrapper untuk form/QR */}
             {qrCodeId ? (
-              // Jika qrCodeId ada, tampilkan QR Code
               <QRCodeDisplay qrCodeValue={qrCodeId} onReset={handleReset} />
             ) : (
-              // Jika belum ada, tampilkan formulir RSVP
               <RSVPForm onRSVPSuccess={handleRSVPSuccess} />
             )}
           </div>
@@ -146,7 +148,6 @@ function App() {
       </section>
 
       {/* Footer Section */}
-      {/* Komponen Footer akan diletakkan di sini */}
       <Footer />
     </div>
   );

@@ -1,36 +1,18 @@
-// src/component/EventGallery.jsx
 import React from 'react';
+
+// --- PERBAIKAN JALUR GAMBAR ---
+// Impor gambar secara langsung dari src/assets
+import event1 from '../assets/1.jpeg';
+import event2 from '../assets/2.jpeg';
+import event3 from '../assets/3.jpeg';
+import event4 from '../assets/4.jpeg';
 
 // Data placeholder untuk galeri event sebelumnya
 const previousEvents = [
-  {
-    id: 1,
-    image: '/src/assets/1.jpeg', // Ganti dengan URL gambar asli
-    title: 'The Sephoria 2021',
-    description: 'Momen tak terlupakan dari pembukaan tahun lalu.',
-    date: '2024-08-15',
-  },
-  {
-    id: 2,
-    image: '/src/assets/2.jpeg', // Ganti dengan URL gambar asli
-    title: 'SKIN & PLANT CARE 2022',
-    description: 'Menjelajahi teknologi terbaru dan ide-ide brilian.',
-    date: '2024-09-22',
-  },
-  {
-    id: 3,
-    image: '/src/assets/3.jpeg', // Ganti dengan URL gambar asli
-    title: 'SKIN & PLANT CARE 2023',
-    description: 'Diskusi tentang keberlanjutan dan masa depan bumi.',
-    date: '2023-11-01',
-  },
-  {
-    id: 4,
-    image: '/src/assets/4.jpeg', // Ganti dengan URL gambar asli
-    title: 'SKIN & PLANT CARE 2024',
-    description: 'Mengembangkan bakat seni dan ekspresi diri.',
-    date: '2023-10-10',
-  },
+  { id: 1, image: event1, title: 'The Sephoria 2021', description: 'Momen tak terlupakan dari pembukaan tahun lalu.', date: '2024-08-15' },
+  { id: 2, image: event2, title: 'SKIN & PLANT CARE 2022', description: 'Menjelajahi teknologi terbaru dan ide-ide brilian.', date: '2024-09-22' },
+  { id: 3, image: event3, title: 'SKIN & PLANT CARE 2023', description: 'Diskusi tentang keberlanjutan dan masa depan bumi.', date: '2023-11-01' },
+  { id: 4, image: event4, title: 'SKIN & PLANT CARE 2024', description: 'Mengembangkan bakat seni dan ekspresi diri.', date: '2023-10-10' },
 ];
 
 function EventGallery() {
@@ -44,7 +26,7 @@ function EventGallery() {
           {previousEvents.map((event) => (
             <div key={event.id} className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <img 
-                src={event.image} 
+                src={event.image} // Gunakan variabel yang diimpor
                 alt={event.title} 
                 className="w-full h-48 object-cover" 
               />
