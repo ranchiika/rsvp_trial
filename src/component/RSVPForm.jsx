@@ -33,7 +33,7 @@ function RSVPForm({ onRSVPSuccess }) {
     try {
       // ⚠️ PENTING: URL ini SEKARANG MENGARAH KE PROXY VITE.
       // Vite akan meneruskan permintaan ini ke URL Google Apps Script yang sebenarnya.
-      const SCRIPT_URL = '/api'; // Cukup gunakan path proxy yang sudah dikonfigurasi di vite.config.js
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1rZaqxVsQCvbi2q44kz-wx_Tv0Tpp8J8GoCSkp500jMvuWo9k9CUP-szl7M5KidhQ/exec'; // Cukup gunakan path proxy yang sudah dikonfigurasi di vite.config.js
 
       const response = await fetch(SCRIPT_URL, {
         method: 'POST',
